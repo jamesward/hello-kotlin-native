@@ -11,13 +11,9 @@ kotlin {
         binaries {
             executable(listOf(DEBUG, RELEASE)) {
                 entryPoint = "main"
-            }
-        }
-        compilations.all {
-            compilerOptions.configure {
-                freeCompilerArgs.addAll(
+                freeCompilerArgs += listOf(
                     "-Xallocator=std",
-                    """-Xoverride-konan-properties=linkerKonanFlags.linux_x64="-lstdc++ -Bdynamic -ldl -lm -lpthread --defsym __cxa_demangle=Konan_cxa_demangle --gc-sections"""",
+                    "-Xoverride-konan-properties=linkerKonanFlags.linux_x64=-lstdc++ -ldl -lm -lpthread --defsym __cxa_demangle=Konan_cxa_demangle --gc-sections",
                 )
             }
         }
