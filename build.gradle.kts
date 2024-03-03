@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.8.0"
+    kotlin("multiplatform") version "1.9.22"
 }
 
 repositories {
@@ -11,10 +11,12 @@ kotlin {
         binaries {
             executable(listOf(DEBUG, RELEASE)) {
                 entryPoint = "main"
+                /*
                 freeCompilerArgs += listOf(
                     "-Xallocator=std",
                     "-Xoverride-konan-properties=linkerKonanFlags.linux_x64=-lstdc++ -ldl -lm -lpthread --defsym __cxa_demangle=Konan_cxa_demangle --gc-sections",
                 )
+                 */
             }
         }
     }
